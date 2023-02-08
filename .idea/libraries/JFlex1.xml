@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="JFlex1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Parser/bin/JFlex.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
