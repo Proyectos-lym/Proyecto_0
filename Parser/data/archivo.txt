@@ -1,0 +1,4 @@
+hola if while 1 : robot_r
+ROBOT_R
+nico danny if goto
+zzz

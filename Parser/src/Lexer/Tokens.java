@@ -1,7 +1,11 @@
 package Lexer;
 
 public enum Tokens {
-    reservada,
+    reservadaCond,
+    reservadaBlock,
+    times,
+    abrirdo,
+    cerrardo,
     condicion,
     instruccion,
     igual,
