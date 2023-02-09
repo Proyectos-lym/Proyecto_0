@@ -75,7 +75,6 @@ public class GeneradorTokens {
 
                 }
             }
-            System.out.println("gg");
         } catch (Exception e) {
             System.out.println("archivo no encontrado");
             e.printStackTrace(); 
