@@ -3,58 +3,66 @@ import static Lexer.Tokens.*;
 %%
 %class Lexer
 %type Tokens
-L=[a-z_]+
+L=[a-zA-Z_]+
 D=[0-9]+
-espacio=[ ,\t,\r,\n]+
+espacio=[ \t\r\n]+
 %{
     public String lexeme;
 %}
 %%
 if |
-else |
-for |
-do |
+while {lexeme=yytext(); return reservadaCond;}
 then |
-od |
-while {lexeme=yytext(); return reservada;}
-facing |
+else {lexeme=yytext(); return reservadaBlock;}
+facing {return condicion1;} 
 canput |
 canpick |
 canmoveindir |
 canjumpindir |
 canmovetothe |
-canjumptothe |
-not {lexeme=yytext(); return condicion}
-assingto |
+canjumptothe {lexeme=yytext(); return condicion2;}
+not {return negacion;}
+assignto |
 goto |
-move |
-turn |
-face |
 put |
 pick |
 movetothe |
 moveindir |
 jumptothe |
-jumpindir |
-nop {lexeme=yytext(); return instruccion}
+jumpindir {lexeme=yytext(); return instruccion2;}
+nop { return quieto;}
+move |
+turn |
+face {lexeme=yytext(); return instruccion1;}
+north |
+south |
+west |
+east {lexeme=yytext(); return cardinal;}
+front |
+left |
+right |
+back {lexeme=yytext(); return direccion;}
 {espacio} {/*Ignore*/}
 "//".* {/*Ignore*/}
+"repeat" {return times;}
+"do" {return abrirdo;}
+"od" {return cerrardo;}
 "=" {return igual;}
 "+" {return suma;}
 "-" {return resta;}
 "*" {return multiplicacion;}
 "/" {return division;}
-"[" {return corchetei}
-"]" {return corcheted}
-"(" {return parentesisi}
-")" {return parentesisd}
-"|" {return pipeline}
-";" {return semicolon}
-"," {return coma}
-":" {return colon}
-"robot_r" {return inicio}
-"vars" {return var}
-"procs" {return funcion}
+"[" {return corchetei;}
+"]" {return corcheted;}
+"(" {return parentesisi;}
+")" {return parentesisd;}
+"|" {return pipeline;}
+";" {return semicolon;}
+"," {return comma;}
+":" {return colon;}
+"robot_r" {return inicio;}
+"vars" {return var;}
+"procs" {return funcion;}
 {L}({L}|{D})* {lexeme=yytext(); return identificador;}
 ("(-"{D}+")")|{D}+ {lexeme=yytext(); return numero;}
  . {return error;}

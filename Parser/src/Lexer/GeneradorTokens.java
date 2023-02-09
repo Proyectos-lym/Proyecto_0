@@ -10,11 +10,10 @@ import java.io.Reader;
 
 
 public class GeneradorTokens { 
-    
-    public static void main(String[] args) throws IOException { //modificar main para dentro del parser
-        archivo("D:/Lym/Proyecto_0/Parser/data/archivo.txt"); //cambiar ruta de archivo
+    public GeneradorTokens(){
+
     }
-    public static void archivo(String ruta) throws IOException {
+    public void archivo(String ruta) throws IOException {
         
         BufferedReader bf = new BufferedReader(new FileReader(ruta));
         File archivo = new File("unificado.txt");
@@ -76,7 +75,7 @@ public class GeneradorTokens {
 
                 }
             }
-
+            System.out.println("gg");
         } catch (Exception e) {
             System.out.println("archivo no encontrado");
             e.printStackTrace(); 
