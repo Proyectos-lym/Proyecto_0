@@ -2,7 +2,7 @@ package Lexer;
 
 import java.io.File;
 
-public class Principal {
+public class Principal { //Cambiar la clase principal
     public static void main(String[] args) {
         String ruta = "D:/Lym/Proyecto_0/Parser/src/Lexer/lexer.flex"; //cambiar ruta de archivo
         leer(ruta);

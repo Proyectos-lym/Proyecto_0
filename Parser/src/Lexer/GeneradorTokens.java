@@ -9,7 +9,7 @@ import java.io.Reader;
 
 
 
-public class Console { 
+public class GeneradorTokens { 
     
     public static void main(String[] args) throws IOException { //modificar main para dentro del parser
         archivo("D:/Lym/Proyecto_0/Parser/data/archivo.txt"); //cambiar ruta de archivo
@@ -66,6 +66,9 @@ public class Console {
                 switch (tokens) {
                     case error:
                         resultado += "not found\n";
+                        break;
+                    case identificador: case instruccion1: case instruccion2: case condicion1: case condicion2:
+                        resultado += lexer.lexeme + " " + tokens + "\n";
                         break;
                     default:
                         resultado += tokens  + "\n";
