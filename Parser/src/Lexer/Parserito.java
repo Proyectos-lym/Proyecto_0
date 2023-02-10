@@ -37,12 +37,6 @@ public class Parserito {
 				contadorCorchete -= 1;
 			}
 
-			
-			if (tokensLista.get(i) == "corcheted" && tokensLista.get(i+1) == "corchetei"){
-				int posBlock = tokensLista.indexOf(i+1); //crear un metodo para sacar la posicion de fin de procs e inicio de block instruction
-					
-			}
-
 			if (i == 0 && tokensLista.get(i) != "inicio"){ 
 				 respuesta = "NO";
 				 return respuesta;
@@ -95,7 +89,7 @@ public class Parserito {
         
     }
 
-	public String analizarProcs(){
+	public String analizarProcs(ArrayList<String> tokensLista, int pos){
 		// identificador
 		// corchetei
 		// pipeline
@@ -110,9 +104,35 @@ public class Parserito {
 		// instruccion1 || instruccion2 || nop
 		// instruccion1: identificador / instruccion2: identificador||numero, identificador||numero
 		//corcheted
+		String respuesta = "";
+		int posProcs = tokensLista.indexOf("funcion");
+		int posBlock;
+		if ((tokensLista.get(pos) == "corcheted") && (tokensLista.get(pos+1) == "corchetei")){
+			posBlock = tokensLista.indexOf("corcheted");
+			List<String> procs = tokensLista.subList(posProcs, posBlock);
+			ArrayList<String> nameProcs = new ArrayList<String>();
+			ArrayList<ArrayList<String>> procsLista = new ArrayList<ArrayList<String>>();
+			ArrayList<String> proc = new ArrayList<String>();
+			for (int i=0; i < procs.size(); i++){
+				if ((procs.get(i).contains("identificador")) && ((procs.get(i-1)!= "pipeline") || (procs.get(i-1)!= "comma"))){
+					nameProcs.add(procs.get(i)); // lista con todos los nombres de los procedimientos
+					//agregar en proc hasta que encuentre otro procedimiento
+					//usar while hasta que encuentre un nombre de los procedimientos de la lista nameProcs diferente al que se esta iniciando por cada nombre de procedimiento					
+				}
 
-		
 
+			
+			}
+
+
+		}
+		return respuesta;
+	}
+
+	public String analizarProc(ArrayList<String> procsLista){
+		String respuesta = "";
+
+		return respuesta;
 	}
 	
     public static void main(String[] args)throws IOException{ //modificar main para dentro del parser
