@@ -7,12 +7,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
 
-
-
 public class Console { 
     
     public static void main(String[] args) throws IOException { //modificar main para dentro del parser
-        archivo("D:/Lym/Proyecto_0/Parser/data/archivo.txt"); //cambiar ruta de archivo
+        archivo("C:/Users/Nico/Desktop/Universidad/Tercer semestre/LyM/Proyectos/Proyecto_0/Parser/data/archivo.txt"); //cambiar ruta de archivo
     }
     public static void archivo(String ruta) throws IOException {
         
@@ -65,10 +63,10 @@ public class Console {
                 }
                 switch (tokens) {
                     case error:
-                        resultado += "not found\n";
+                        resultado += "not found/n";
                         break;
                     default:
-                        resultado += tokens  + "\n";
+                        resultado += tokens  + "/n";
                         break;
 
                 }

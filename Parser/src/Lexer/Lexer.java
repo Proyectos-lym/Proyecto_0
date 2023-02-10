@@ -9,7 +9,7 @@ import static Lexer.Tokens.*;
  * on 08/02/23, 00:02 from the specification file
  * <tt>D:/Lym/Proyecto_0/Parser/src/Lexer/lexer.flex</tt>
  */
-class Lexer {
+public class Lexer {
 
   /** This character denotes the end of file */
   public static final int YYEOF = -1;
