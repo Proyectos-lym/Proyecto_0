@@ -7,14 +7,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
 
-public class Console { 
+
+
+public class GeneradorTokens { 
     
-    public static void main(String[] args) throws IOException { //modificar main para dentro del parser
-        archivo("C:/Users/Nico/Desktop/Universidad/Tercer semestre/LyM/Proyectos/Proyecto_0/Parser/data/archivo.txt"); //cambiar ruta de archivo
-    }
-    public static void archivo(String ruta) throws IOException {
+    public void archivo() throws IOException {
         
-        BufferedReader bf = new BufferedReader(new FileReader(ruta));
+        BufferedReader bf = new BufferedReader(new FileReader("../Proyecto_0/Parser/data/archivo.txt"));
         File archivo = new File("unificado.txt");
         String line;
 
@@ -63,15 +62,17 @@ public class Console {
                 }
                 switch (tokens) {
                     case error:
-                        resultado += "not found/n";
+                        resultado += "not found\n";
+                        break;
+                    case identificador: case instruccion1: case instruccion2: case condicion1: case condicion2:
+                        resultado += lexer.lexeme + " " + tokens + "\n";
                         break;
                     default:
-                        resultado += tokens  + "/n";
+                        resultado += tokens  + "\n";
                         break;
 
                 }
             }
-
         } catch (Exception e) {
             System.out.println("archivo no encontrado");
             e.printStackTrace(); 

@@ -5,7 +5,7 @@ import static Lexer.Tokens.*;
 %type Tokens
 L=[a-zA-Z_]+
 D=[0-9]+
-espacio=[ ,\t,\r,\n]+
+espacio=[ \t\r\n]+
 %{
     public String lexeme;
 %}
@@ -13,32 +13,39 @@ espacio=[ ,\t,\r,\n]+
 if |
 while {lexeme=yytext(); return reservadaCond;}
 then |
+do |
 else {lexeme=yytext(); return reservadaBlock;}
-facing |
+facing {return condicion1;} 
 canput |
 canpick |
 canmoveindir |
 canjumpindir |
 canmovetothe |
-canjumptothe |
-not {lexeme=yytext(); return condicion;}
-assingto |
+canjumptothe {lexeme=yytext(); return condicion2;}
+not {return negacion;}
+assignto |
 goto |
-move |
-turn |
-face |
 put |
 pick |
 movetothe |
 moveindir |
 jumptothe |
-jumpindir |
-nop {lexeme=yytext(); return instruccion;}
+jumpindir {lexeme=yytext(); return instruccion2;}
+nop { return quieto;}
+move |
+turn |
+face {lexeme=yytext(); return instruccion1;}
+north |
+south |
+west |
+east {lexeme=yytext(); return cardinal;}
+front |
+left |
+right |
+back {lexeme=yytext(); return direccion;}
 {espacio} {/*Ignore*/}
 "//".* {/*Ignore*/}
 "repeat" {return times;}
-"do" {return abrirdo;}
-"od" {return cerrardo;}
 "=" {return igual;}
 "+" {return suma;}
 "-" {return resta;}
@@ -50,11 +57,13 @@ nop {lexeme=yytext(); return instruccion;}
 ")" {return parentesisd;}
 "|" {return pipeline;}
 ";" {return semicolon;}
-"," {return coma;}
+"," {return comma;}
 ":" {return colon;}
 "robot_r" {return inicio;}
 "vars" {return var;}
 "procs" {return funcion;}
+"balloons" {return globo;}
+"chips" {return chips;}
 {L}({L}|{D})* {lexeme=yytext(); return identificador;}
 ("(-"{D}+")")|{D}+ {lexeme=yytext(); return numero;}
  . {return error;}

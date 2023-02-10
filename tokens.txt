@@ -1,0 +1,96 @@
+inicio
+var
+nom identificador
+comma
+x identificador
+comma
+y identificador
+comma
+one identificador
+semicolon
+funcion
+putcb identificador
+corchetei
+pipeline
+c identificador
+comma
+b identificador
+pipeline
+assignto instruccion2
+colon
+numero
+comma
+one identificador
+semicolon
+put instruccion2
+colon
+c identificador
+comma
+chips
+semicolon
+put instruccion2
+colon
+b identificador
+comma
+globo
+corcheted
+gonorth identificador
+corchetei
+pipeline
+pipeline
+reservadaCond
+colon
+canmovetothe condicion2
+colon
+numero
+comma
+cardinal
+abrirdo
+colon
+corchetei
+moveindir instruccion2
+colon
+numero
+comma
+cardinal
+corcheted
+cerrardo
+corcheted
+gowest identificador
+corchetei
+pipeline
+pipeline
+reservadaCond
+colon
+canmoveindir condicion2
+colon
+numero
+comma
+cardinal
+reservadaBlock
+colon
+corchetei
+moveindir instruccion2
+colon
+numero
+comma
+cardinal
+corcheted
+reservadaBlock
+colon
+quieto
+colon
+corcheted
+corchetei
+goto instruccion2
+colon
+numero
+comma
+numero
+putcb identificador
+colon
+numero
+comma
+numero
+corcheted
+FIN
