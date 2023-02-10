@@ -26,13 +26,13 @@ put instruccion2
 colon
 c identificador
 comma
-chips identificador
+chips
 semicolon
 put instruccion2
 colon
 b identificador
 comma
-balloons identificador
+globo
 corcheted
 gonorth identificador
 corchetei

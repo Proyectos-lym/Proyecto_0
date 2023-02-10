@@ -10,12 +10,10 @@ import java.io.Reader;
 
 
 public class GeneradorTokens { 
-    public GeneradorTokens(){
-
-    }
-    public void archivo(String ruta) throws IOException {
+    
+    public void archivo() throws IOException {
         
-        BufferedReader bf = new BufferedReader(new FileReader(ruta));
+        BufferedReader bf = new BufferedReader(new FileReader("../Proyecto_0/Parser/data/archivo.txt"));
         File archivo = new File("unificado.txt");
         String line;
 

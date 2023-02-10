@@ -13,6 +13,7 @@ espacio=[ \t\r\n]+
 if |
 while {lexeme=yytext(); return reservadaCond;}
 then |
+do |
 else {lexeme=yytext(); return reservadaBlock;}
 facing {return condicion1;} 
 canput |
@@ -45,8 +46,6 @@ back {lexeme=yytext(); return direccion;}
 {espacio} {/*Ignore*/}
 "//".* {/*Ignore*/}
 "repeat" {return times;}
-"do" {return abrirdo;}
-"od" {return cerrardo;}
 "=" {return igual;}
 "+" {return suma;}
 "-" {return resta;}
@@ -63,6 +62,8 @@ back {lexeme=yytext(); return direccion;}
 "robot_r" {return inicio;}
 "vars" {return var;}
 "procs" {return funcion;}
+"balloons" {return globo;}
+"chips" {return chips;}
 {L}({L}|{D})* {lexeme=yytext(); return identificador;}
 ("(-"{D}+")")|{D}+ {lexeme=yytext(); return numero;}
  . {return error;}

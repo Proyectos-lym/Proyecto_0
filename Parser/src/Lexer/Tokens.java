@@ -2,6 +2,8 @@ package Lexer;
 
 public enum Tokens {
     reservadaCond,
+    globo,
+    chips,
     reservadaBlock,
     condicion2,
     instruccion2,
