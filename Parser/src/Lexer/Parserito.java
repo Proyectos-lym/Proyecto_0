@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Parserito {
-	public ArrayList<String> crearLista() throws IOException{
+
+	public static ArrayList<String> crearLista() throws IOException{
 	ArrayList<String> tokensList = new ArrayList<String>();
 	try {
 		BufferedReader tokens = new BufferedReader(new FileReader("../Proyecto_0/Parser/tokens.txt"));
@@ -23,12 +24,12 @@ public class Parserito {
 	return tokensList;
 	}
 
-	public String analizadorSintactico(ArrayList<String> tokensLista){
+	public static String analizadorSintactico(ArrayList<String> tokensLista){
 		String respuesta = "";
 		int contadorCorchete = 0;
 		int contadorPipe = 0;
 		
-		for(int i = 0; i < tokensLista.size(); i++){
+		for(int i = 0; i < tokensLista.size(); i++){ //for(String i: tokensLista)
 			if (tokensLista.get(i) == "corchetei"){
 				contadorCorchete += 1;
 			
@@ -61,7 +62,7 @@ public class Parserito {
 			}
 			 if ((tokensLista.contains("var") == false) && (i == 1 && tokensLista.get(i) == "funcion")){ // declaracion de procedimientos
 				// La posición 1 es procs
-				List<String> procs = tokensLista.subList(i, posBlock);
+				analizarProcs(tokensList);
 				
 
 				
@@ -83,13 +84,13 @@ public class Parserito {
 		return respuesta;
 	}
    
-    private void cargarDato() throws IOException{
+    private static void cargarDato() throws IOException{
         GeneradorTokens generador = new GeneradorTokens();
         generador.archivo(); // Cambiar ruta archivo
         
     }
 
-	public String analizarProcs(ArrayList<String> tokensLista, int pos){
+	public static String analizarProcs(ArrayList<String> tokensLista, int pos){
 		// identificador
 		// corchetei
 		// pipeline
@@ -111,25 +112,28 @@ public class Parserito {
 			posBlock = tokensLista.indexOf("corcheted");
 			List<String> procs = tokensLista.subList(posProcs, posBlock);
 			ArrayList<String> nameProcs = new ArrayList<String>();
-			ArrayList<ArrayList<String>> procsLista = new ArrayList<ArrayList<String>>();
-			ArrayList<String> proc = new ArrayList<String>();
-			for (int i=0; i < procs.size(); i++){
+			ArrayList<ArrayList<String>> procsLista = new ArrayList<ArrayList<String>>(); //lista con todos los procedimientos
+			ArrayList<String> proc = new ArrayList<String>(); // lista con las tokens del procedimiento
+			for (int i=0; i < procs.size(); i++){ //for (String i: procs)
 				if ((procs.get(i).contains("identificador")) && ((procs.get(i-1)!= "pipeline") || (procs.get(i-1)!= "comma"))){
 					nameProcs.add(procs.get(i)); // lista con todos los nombres de los procedimientos
-					//agregar en proc hasta que encuentre otro procedimiento
-					//usar while hasta que encuentre un nombre de los procedimientos de la lista nameProcs diferente al que se esta iniciando por cada nombre de procedimiento					
 				}
-
-
-			
+				while (! nameProcs.contains(procs.get(i))){
+					proc.add(procs.get(i));
+				}
+				procsLista.add(proc);	
 			}
+
+			for(int j=0; j < procsLista.size(); j++){
+				respuesta = analizarProc(procsLista.get(j));
+			} 
 
 
 		}
 		return respuesta;
 	}
 
-	public String analizarProc(ArrayList<String> procsLista){
+	public static String analizarProc(ArrayList<String> procsLista){
 		String respuesta = "";
 
 		return respuesta;
@@ -138,6 +142,9 @@ public class Parserito {
     public static void main(String[] args)throws IOException{ //modificar main para dentro del parser
         Parserito parser = new Parserito();
         parser.cargarDato();
+		ArrayList<String> lista = crearLista();
+		analizadorSintactico(lista);
+		
         
     }
 }
