@@ -7,10 +7,10 @@ import java.util.List;
 
 public class Parserito {
 
-	public static ArrayList<String> crearLista() throws IOException{
+	public ArrayList<String> crearLista() throws IOException{
 	ArrayList<String> tokensList = new ArrayList<String>();
 	try {
-		BufferedReader tokens = new BufferedReader(new FileReader("../Proyecto_0/Parser/tokens.txt"));
+		BufferedReader tokens = new BufferedReader(new FileReader("../Proyecto_0/tokens.txt"));
 		
 		String line;
 		while ((line = tokens.readLine()) != null){
@@ -24,7 +24,7 @@ public class Parserito {
 	return tokensList;
 	}
 
-	public static String analizadorSintactico(ArrayList<String> tokensLista){
+	public String analizadorSintactico(ArrayList<String> tokensLista){
 		String respuesta = "";
 		int contadorCorchete = 0;
 		int contadorPipe = 0;
@@ -62,7 +62,8 @@ public class Parserito {
 			}
 			 if ((tokensLista.contains("var") == false) && (i == 1 && tokensLista.get(i) == "funcion")){ // declaracion de procedimientos
 				// La posición 1 es procs
-				analizarProcs(tokensList);
+				respuesta = analizarProcs(tokensLista,i);
+				return respuesta;
 				
 
 				
@@ -84,13 +85,13 @@ public class Parserito {
 		return respuesta;
 	}
    
-    private static void cargarDato() throws IOException{
+    public void cargarDato() throws IOException{
         GeneradorTokens generador = new GeneradorTokens();
         generador.archivo(); // Cambiar ruta archivo
         
     }
 
-	public static String analizarProcs(ArrayList<String> tokensLista, int pos){
+	public String analizarProcs(ArrayList<String> tokensLista, int pos){
 		// identificador
 		// corchetei
 		// pipeline
@@ -133,19 +134,19 @@ public class Parserito {
 		return respuesta;
 	}
 
-	public static String analizarProc(ArrayList<String> procsLista){
+	public  String analizarProc(ArrayList<String> procsLista){
 		String respuesta = "";
 
 		return respuesta;
 	}
 	
-    public static void main(String[] args)throws IOException{ //modificar main para dentro del parser
+    /* public static void main(String[] args)throws IOException{ //modificar main para dentro del parser
         Parserito parser = new Parserito();
         parser.cargarDato();
 		ArrayList<String> lista = crearLista();
 		analizadorSintactico(lista);
-		
         
     }
+     */
 }
 

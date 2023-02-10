@@ -45,7 +45,7 @@ colon
 numero
 comma
 cardinal
-abrirdo
+reservadaBlock
 colon
 corchetei
 moveindir instruccion2
@@ -54,7 +54,7 @@ numero
 comma
 cardinal
 corcheted
-cerrardo
+od identificador
 corcheted
 gowest identificador
 corchetei
