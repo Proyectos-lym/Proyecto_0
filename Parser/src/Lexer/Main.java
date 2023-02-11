@@ -9,7 +9,6 @@ public class Main {
 		parser.cargarDato();
 		ArrayList<String> lista = parser.crearLista();
 		System.out.println(parser.analizadorSintactico(lista));
-		System.out.println("hola");
 	}
 
 }

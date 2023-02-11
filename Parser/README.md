@@ -1,18 +1,24 @@
+
+
+
+
+
 ## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Welcome to the Robot Parser repository. 
 
-## Folder Structure
 
-The workspace contains two folders by default, where:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## How to use
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+Important: This program uses Jflex in order to generate the tokens that will be analyzed. You will see a JFlex.jar file in the lib folder, DO NOT REMOVE THIS. You need at leat one of the 5 latest java versions.
+Clone this repository to your local machine using: git clone https://github.com/Proyectos-lym/Proyecto_0.git
+The file that uses this program is located in the data directory, named as "archivo.txt" in here, you can put the program you want to analyze. 
+From Eclipse IDE, execute Main.java
 
-## Dependency Management
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Authors
+Nicolas Bedoya (n.bedoyaf@uniandes.edu.co)
+Daniel Fuentes (d.fuentese@uniandes.edu.co)
+
